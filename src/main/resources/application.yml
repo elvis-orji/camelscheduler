@@ -1,0 +1,20 @@
+camel:
+  springboot:
+    main-run-controller: true
+
+server:
+  port: 8989
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+
+  data:
+    mongodb:
+      auto-index-creation: true
+      userdb:
+        database: User
+        uri: mongodb://root:password@localhost/${spring.data.mongodb.userdb.database}?authSource=admin
+      schedulerdb:
+        database: Scheduler
+        uri: mongodb://root:password@localhost/${spring.data.mongodb.schedulerdb.database}?authSource=admin
